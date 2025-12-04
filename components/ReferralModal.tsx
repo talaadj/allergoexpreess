@@ -150,42 +150,67 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
         </div>
       </div>
 
-      {/* Drug List */}
-      <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[9px] mb-3 print:grid-cols-2 border-t border-b border-black py-1.5">
-        {t.referralDrugs.map((drug, idx) => (
-          <label key={idx} className="flex items-start gap-1.5 cursor-pointer group p-0.5 rounded hover:bg-slate-50 print:hover:bg-transparent" style={{ lineHeight: '1.2' }}>
-            <div
-              className={`border border-black flex items-center justify-center ${formData.selectedDrugs.includes(drug) ? 'bg-black' : 'bg-white'} print-color-adjust-exact`}
-              style={{ width: '10px', height: '10px', minWidth: '10px', minHeight: '10px', marginTop: '1px' }}
-            >
-              {formData.selectedDrugs.includes(drug) && <span className="text-white text-[7px] leading-none">✓</span>}
-            </div>
-            {!isPrint && (
-              <input
-                type="checkbox"
-                checked={formData.selectedDrugs.includes(drug)}
-                onChange={() => handleDrugToggle(drug)}
-                className="hidden"
-              />
-            )}
-            <span className={`text-black leading-tight ${formData.selectedDrugs.includes(drug) ? 'font-bold' : ''}`} style={{ lineHeight: '1.2' }}>
-              {drug}
-            </span>
-          </label>
-        ))}
-        <div className="flex items-center gap-2 mt-0.5 col-span-2">
-          <span className="font-bold text-black">{t.ui.referralOther}</span>
-          {isPrint ? (
-            <div className="flex-1 border-b border-black px-2 py-0 text-black text-[9px]">{formData.otherDrug}</div>
-          ) : (
-            <input
-              type="text"
-              value={formData.otherDrug}
-              onChange={e => setFormData({ ...formData, otherDrug: e.target.value })}
-              className="flex-1 border-b border-black outline-none px-2 py-0 bg-transparent text-black text-[9px]"
-            />
-          )}
-        </div>
+      {/* Drug List - Using table for PDF compatibility */}
+      <div className="border-t border-b border-black py-1.5 mb-3">
+        <table className="w-full text-[9px]" style={{ borderCollapse: 'collapse' }}>
+          <tbody>
+            {(() => {
+              const drugs = t.referralDrugs;
+              const rows = [];
+              for (let i = 0; i < drugs.length; i += 2) {
+                rows.push(
+                  <tr key={i}>
+                    <td style={{ padding: '2px 4px', verticalAlign: 'top', width: '50%' }}>
+                      <label className="cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
+                        <span
+                          className={`inline-block border border-black text-center align-middle print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i]) ? 'bg-black text-white' : 'bg-white'}`}
+                          style={{ width: '10px', height: '10px', lineHeight: '10px', fontSize: '7px', marginRight: '4px' }}
+                        >
+                          {formData.selectedDrugs.includes(drugs[i]) ? '✓' : ''}
+                        </span>
+                        <span className={`text-black ${formData.selectedDrugs.includes(drugs[i]) ? 'font-bold' : ''}`}>
+                          {drugs[i]}
+                        </span>
+                      </label>
+                    </td>
+                    {drugs[i + 1] && (
+                      <td style={{ padding: '2px 4px', verticalAlign: 'top', width: '50%' }}>
+                        <label className="cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
+                          <span
+                            className={`inline-block border border-black text-center align-middle print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'bg-black text-white' : 'bg-white'}`}
+                            style={{ width: '10px', height: '10px', lineHeight: '10px', fontSize: '7px', marginRight: '4px' }}
+                          >
+                            {formData.selectedDrugs.includes(drugs[i + 1]) ? '✓' : ''}
+                          </span>
+                          <span className={`text-black ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'font-bold' : ''}`}>
+                            {drugs[i + 1]}
+                          </span>
+                        </label>
+                      </td>
+                    )}
+                  </tr>
+                );
+              }
+              return rows;
+            })()}
+            <tr>
+              <td colSpan={2} style={{ padding: '4px 4px 2px 4px' }}>
+                <span className="font-bold text-black">{t.ui.referralOther}</span>
+                {isPrint ? (
+                  <span className="border-b border-black px-2 text-black text-[9px] inline-block" style={{ minWidth: '200px' }}>{formData.otherDrug}</span>
+                ) : (
+                  <input
+                    type="text"
+                    value={formData.otherDrug}
+                    onChange={e => setFormData({ ...formData, otherDrug: e.target.value })}
+                    className="border-b border-black outline-none px-2 bg-transparent text-black text-[9px]"
+                    style={{ minWidth: '200px' }}
+                  />
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       {/* Footer Info */}
