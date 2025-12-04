@@ -38,7 +38,7 @@ export default async function handler(request: Request) {
             });
         }
 
-        const { orderId, patientName, phone, date, birthDate, medications, iin, gender, address, customer, sampleDate, registrationDate } = data;
+        const { orderId, patientName, phone, date, birthDate, medications, iin, gender, address, customer, sampleDate, sampleTime, registrationDate } = data;
 
         if (!orderId || !patientName) {
             return new Response(JSON.stringify({ error: 'Missing required fields: orderId and patientName are required' }), {
@@ -75,6 +75,7 @@ export default async function handler(request: Request) {
             await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS address VARCHAR(255);`;
             await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS customer VARCHAR(255);`;
             await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS sample_date VARCHAR(255);`;
+            await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS sample_time VARCHAR(255);`;
             await sql`ALTER TABLE results ADD COLUMN IF NOT EXISTS registration_date VARCHAR(255);`;
         } catch (e) {
             // Columns might already exist, ignore error
@@ -83,7 +84,7 @@ export default async function handler(request: Request) {
 
         // Insert data
         await sql`
-      INSERT INTO results (order_id, patient_name, phone, date, birth_date, iin, gender, address, customer, sample_date, registration_date, medications)
+      INSERT INTO results (order_id, patient_name, phone, date, birth_date, iin, gender, address, customer, sample_date, sample_time, registration_date, medications)
       VALUES (
         ${orderId}, 
         ${patientName}, 
@@ -95,6 +96,7 @@ export default async function handler(request: Request) {
         ${address || null}, 
         ${customer || null}, 
         ${sampleDate || null}, 
+        ${sampleTime || null},
         ${registrationDate || null}, 
         ${JSON.stringify(medications)}
       )
@@ -108,6 +110,7 @@ export default async function handler(request: Request) {
         address = EXCLUDED.address,
         customer = EXCLUDED.customer,
         sample_date = EXCLUDED.sample_date,
+        sample_time = EXCLUDED.sample_time,
         registration_date = EXCLUDED.registration_date,
         medications = EXCLUDED.medications;
     `;

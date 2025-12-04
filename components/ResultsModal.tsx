@@ -31,6 +31,7 @@ interface OrderResult {
     address?: string;
     customer?: string;
     sampleDate?: string;
+    sampleTime?: string;
     registrationDate?: string;
 }
 
@@ -87,6 +88,7 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                     address: data.address || '',
                     customer: data.customer || '',
                     sampleDate: data.sample_date || '',
+                    sampleTime: data.sample_time || '',
                     registrationDate: data.registration_date || '',
                     medications: medications.map((m: any) => m.name || ''),
                     results: medications.map((m: any) => ({
@@ -316,11 +318,15 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                             <span>Сыворотка</span>
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
-                                            <span>Үлгіні алу уақыты:</span>
+                                            <span>Үлгіні алу күні (Дата взятия):</span>
                                             <span>{result.sampleDate || result.date}</span>
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
-                                            <span>Тіркелген уақыты:</span>
+                                            <span>Үлгіні алу уақыты (Время взятия):</span>
+                                            <span>{result.sampleTime || '-'}</span>
+                                        </div>
+                                        <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
+                                            <span>Тіркелген күні (Регистрация):</span>
                                             <span>{result.registrationDate || result.date}</span>
                                         </div>
                                     </div>
@@ -398,51 +404,56 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                     <div className="flex justify-between items-start mb-1">
                                         {/* Stamp and signature - Left */}
                                         <div className="relative" style={{ width: '160px' }}>
-                                            {/* Circular stamp with text along circle */}
-                                            <div className="absolute left-4 -top-2" style={{ width: '90px', height: '90px', transform: 'rotate(10deg)' }}>
-                                                <svg viewBox="0 0 100 100" className="w-full h-full">
-                                                    {/* Outer circle */}
-                                                    <circle cx="50" cy="50" r="48" fill="none" stroke="#1e40af" strokeWidth="2.5" />
-                                                    {/* Inner circle */}
-                                                    <circle cx="50" cy="50" r="42" fill="none" stroke="#1e40af" strokeWidth="0.5" />
+                                            {/* Official circular stamp */}
+                                            <div className="absolute left-2 -top-4" style={{ width: '100px', height: '100px', transform: 'rotate(-8deg)' }}>
+                                                <svg viewBox="0 0 120 120" className="w-full h-full">
+                                                    {/* Outer double circle */}
+                                                    <circle cx="60" cy="60" r="56" fill="none" stroke="#1e3a8a" strokeWidth="3" opacity="0.85" />
+                                                    <circle cx="60" cy="60" r="52" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
 
-                                                    {/* Text along top arc */}
+                                                    {/* Inner circle */}
+                                                    <circle cx="60" cy="60" r="40" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
+
+                                                    {/* Top text path */}
                                                     <defs>
-                                                        <path id="topArc" d="M 10,50 A 40,40 0 0,1 90,50" fill="none" />
-                                                        <path id="bottomArc" d="M 90,50 A 40,40 0 0,1 10,50" fill="none" />
+                                                        <path id="topCircle" d="M 14,60 A 46,46 0 0,1 106,60" fill="none" />
+                                                        <path id="bottomCircle" d="M 106,60 A 46,46 0 0,1 14,60" fill="none" />
                                                     </defs>
 
-                                                    <text className="fill-blue-700 font-bold" style={{ fontSize: '5px' }}>
-                                                        <textPath href="#topArc" startOffset="50%" textAnchor="middle">
-                                                            ЖШС "РЕСПУБЛИКАЛЫҚ КЛИНИКАЛЫҚ-
+                                                    {/* Top arc text */}
+                                                    <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
+                                                        <textPath href="#topCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '7px' }}>
+                                                            ★ ALLERGOEXPRESS IMMUNOLAB ★
                                                         </textPath>
                                                     </text>
 
-                                                    <text className="fill-blue-700 font-bold" style={{ fontSize: '5px' }}>
-                                                        <textPath href="#bottomArc" startOffset="50%" textAnchor="middle">
-                                                            ЗЕРТХАНАЛЫҚ ЗЕРТТЕУЛЕР ОРТАЛЫҒЫ"
+                                                    {/* Bottom arc text */}
+                                                    <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
+                                                        <textPath href="#bottomCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '6px' }}>
+                                                            г.АЛМАТЫ • ЛИЦЕНЗИЯ №21019421
                                                         </textPath>
                                                     </text>
 
-                                                    {/* Center text */}
-                                                    <text x="50" y="48" textAnchor="middle" className="fill-blue-700 font-bold" style={{ fontSize: '6px' }}>ДЛЯ</text>
-                                                    <text x="50" y="55" textAnchor="middle" className="fill-blue-700 font-bold" style={{ fontSize: '6px' }}>АНАЛИЗОВ</text>
+                                                    {/* Center content */}
+                                                    <text x="60" y="52" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>ДЛЯ</text>
+                                                    <text x="60" y="62" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>АНАЛИЗОВ</text>
+                                                    <text x="60" y="72" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '6px' }}>ТОО</text>
                                                 </svg>
                                             </div>
-                                            <div className="pt-20 text-center">
+                                            <div className="pt-24 text-center">
                                                 <div className="text-[7px] leading-tight">
                                                     <p>Орындаушы (Исполнитель)</p>
-                                                    <p className="text-[6px]">Performer: _____________</p>
+                                                    <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Doctor signature - Right */}
                                         <div className="text-center" style={{ width: '160px' }}>
-                                            <div className="h-20"></div>
+                                            <div className="h-24"></div>
                                             <div className="text-[7px] leading-tight">
                                                 <p>Дәрігер (Врач)</p>
-                                                <p className="text-[6px]">Doctor: _____________</p>
+                                                <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
                                             </div>
                                         </div>
                                     </div>

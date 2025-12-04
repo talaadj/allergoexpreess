@@ -38,97 +38,141 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
     };
 
     const BannerContent = () => (
-        <div className="w-full h-full bg-gradient-to-br from-green-50 to-green-100 p-8 flex flex-col justify-between print-color-adjust-exact">
-            {/* Header */}
-            <div className="text-center mb-6">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                    <img src="/logo-full.png" alt="AllergoExpress Immunolab" className="h-20" />
-                </div>
-                <h2 className="text-5xl font-extrabold text-blue-700 mb-4">
-                    AllergoExpress Immunolab
-                </h2>
-            </div>
+        <div className="w-full h-full relative overflow-hidden print-color-adjust-exact" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }}>
+            {/* Animated gradient overlay */}
+            <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 30% 20%, #22c55e 0%, transparent 50%), radial-gradient(circle at 70% 80%, #3b82f6 0%, transparent 50%)' }}></div>
 
-            {/* Main Promotion */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 mb-6">
-                <div className="text-center mb-6">
-                    <div className="inline-block bg-red-600 text-white px-8 py-3 rounded-full mb-4">
-                        <span className="text-3xl font-extrabold uppercase">АКЦИЯ</span>
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-green-500/20 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-full blur-3xl"></div>
+
+            {/* Content */}
+            <div className="relative z-10 p-8 flex flex-col h-full">
+                {/* Header with logo */}
+                <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                        <img src="/logo-full.png" alt="Logo" className="h-16" />
+                        <div>
+                            <h1 className="text-2xl font-black text-white tracking-tight">AllergoExpress</h1>
+                            <p className="text-green-400 font-semibold">ImmunoLab</p>
+                        </div>
                     </div>
-                    <h3 className="text-6xl font-black text-red-600 mb-4 uppercase">
-                        -20% СКИДКА
-                    </h3>
-                    <p className="text-3xl font-bold text-gray-800 mb-2">
+                    <div className="text-right">
+                        <p className="text-green-400 text-sm font-medium">Лицензия МЗ РК</p>
+                        <p className="text-white/60 text-xs">№ 21019421</p>
+                    </div>
+                </div>
+
+                {/* URGENCY Banner */}
+                <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 px-6 -mx-8 mb-6 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMjAgMjBMMCA0MFY0MGg0MEwyMCAyMHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-20"></div>
+                    <div className="flex items-center justify-center gap-4 relative">
+                        <span className="text-yellow-300 text-3xl">⚡</span>
+                        <p className="text-white text-2xl font-black uppercase tracking-wide">
+                            Только до 31 декабря!
+                        </p>
+                        <span className="text-yellow-300 text-3xl">⚡</span>
+                    </div>
+                </div>
+
+                {/* Main offer */}
+                <div className="flex-1 flex flex-col items-center justify-center text-center mb-6">
+                    <div className="mb-4">
+                        <span className="inline-block bg-yellow-400 text-black px-6 py-2 rounded-full text-lg font-black uppercase tracking-wider transform -rotate-2 shadow-lg">
+                            🔥 Горящее предложение
+                        </span>
+                    </div>
+
+                    <h2 className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 mb-4 leading-tight">
+                        -20%
+                    </h2>
+
+                    <p className="text-3xl text-white font-bold mb-2">
                         на экспресс-анализ
                     </p>
-                    <p className="text-2xl text-gray-700">
-                        Результат за 2 часа!
+                    <p className="text-xl text-green-400 font-semibold mb-6">
+                        на аллергию к лекарствам
                     </p>
-                </div>
 
-                <div className="bg-green-100 rounded-2xl p-6">
-                    <div className="grid grid-cols-2 gap-4 text-center">
-                        <div>
-                            <p className="text-gray-600 text-lg mb-1">Обычная цена:</p>
-                            <p className="text-3xl font-bold text-gray-400 line-through">8000 ₸</p>
+                    {/* Price comparison */}
+                    <div className="flex items-center gap-8 mb-6">
+                        <div className="text-center">
+                            <p className="text-white/50 text-sm mb-1">Было</p>
+                            <p className="text-3xl text-white/40 line-through font-bold">8 000 ₸</p>
                         </div>
-                        <div>
-                            <p className="text-green-700 text-lg mb-1 font-bold">Цена по акции:</p>
-                            <p className="text-5xl font-black text-green-600">6400 ₸</p>
+                        <div className="text-6xl text-green-400">→</div>
+                        <div className="text-center">
+                            <p className="text-green-400 text-sm mb-1 font-bold">Стало</p>
+                            <p className="text-5xl text-white font-black">6 400 ₸</p>
+                        </div>
+                    </div>
+
+                    {/* Benefits */}
+                    <div className="flex gap-6 justify-center flex-wrap">
+                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                            <span className="text-2xl">⏱️</span>
+                            <span className="text-white font-semibold">Результат за 2 часа</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                            <span className="text-2xl">🏥</span>
+                            <span className="text-white font-semibold">Выезд на дом</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                            <span className="text-2xl">✅</span>
+                            <span className="text-white font-semibold">100% точность</span>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* Services List */}
-            <div className="bg-blue-500 text-white rounded-2xl p-6 mb-6">
-                <h4 className="text-2xl font-bold mb-4 text-center uppercase">
-                    Мы проводим анализы на:
-                </h4>
-                <div className="grid grid-cols-2 gap-3">
-                    {[
-                        'НА ЛЮБЫЕ АНЕСТЕЗИОЛОГИЧЕСКИЕ ПРЕПАРАТЫ',
-                        'НА АНТИБИОТИКИ',
-                        'НА ЛАМПИЛИН'
-                    ].map((item, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                            <div className="bg-white text-blue-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">
-                                <span className="text-sm font-bold">✓</span>
+                {/* Tests list */}
+                <div className="bg-white/5 backdrop-blur rounded-2xl p-6 mb-6">
+                    <h3 className="text-xl font-bold text-white text-center mb-4">
+                        Проводим анализы на аллергию к:
+                    </h3>
+                    <div className="grid grid-cols-3 gap-3">
+                        {[
+                            '💉 Анестетикам',
+                            '💊 Антибиотикам',
+                            '🩺 Ампициллину',
+                            '💉 Лидокаину',
+                            '💊 Амоксициллину',
+                            '🩺 И многим другим'
+                        ].map((item, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-white/90 text-sm">
+                                <span>{item}</span>
                             </div>
-                            <span className="text-base font-semibold">{item}</span>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-            </div>
 
-            {/* Contact Info with QR Code */}
-            <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-2xl p-6">
-                <div className="flex items-center justify-between gap-8">
-                    <div className="flex-1">
-                        <div className="mb-4">
-                            <p className="text-xl font-bold mb-2">💬 WhatsApp:</p>
-                            <p className="text-3xl font-black">+7 (707) 518 60 88</p>
-                        </div>
+                {/* CTA Section */}
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-6 relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'%23fff\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'3\' cy=\'3\' r=\'1.5\'/%3E%3C/g%3E%3C/svg%3E")' }}></div>
+                    <div className="flex items-center justify-between relative">
                         <div>
-                            <p className="text-lg font-semibold">📧 Email: allergoexpress.immunolab@gmail.com</p>
+                            <p className="text-white/80 text-sm mb-1">Звоните прямо сейчас!</p>
+                            <p className="text-3xl font-black text-white">+7 (707) 518 60 88</p>
+                            <p className="text-white/80 text-sm mt-1">📧 allergoexpress.immunolab@gmail.com</p>
+                        </div>
+                        <div className="flex flex-col items-center">
+                            <div className="bg-white p-2 rounded-xl shadow-lg">
+                                <img
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data=https://wa.me/77075186088&size=100x100"
+                                    alt="WhatsApp QR"
+                                    className="w-20 h-20"
+                                />
+                            </div>
+                            <p className="text-white text-xs mt-2 font-semibold">📱 WhatsApp</p>
                         </div>
                     </div>
-                    <div className="bg-white p-3 rounded-xl">
-                        <img
-                            src="https://api.qrserver.com/v1/create-qr-code/?data=https://allergoexpressmed.vercel.app&size=150x150"
-                            alt="QR Code"
-                            className="w-24 h-24"
-                        />
-                        <p className="text-xs text-center text-gray-800 mt-1 font-bold">Наш сайт</p>
-                    </div>
                 </div>
-            </div>
 
-            {/* Footer */}
-            <div className="text-center mt-6">
-                <p className="text-sm text-gray-600">
-                    * Акция действует до 31 декабря 2024 года. Подробности уточняйте по телефону.
-                </p>
+                {/* Social proof */}
+                <div className="flex items-center justify-center gap-8 mt-4 text-white/60 text-sm">
+                    <span>⭐ 4.9 рейтинг</span>
+                    <span>👥 1000+ довольных клиентов</span>
+                    <span>🏆 5 лет опыта</span>
+                </div>
             </div>
         </div>
     );
@@ -139,8 +183,8 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm print:hidden">
                 <div className="bg-white w-full max-w-4xl rounded-xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
                     {/* Header */}
-                    <div className="bg-green-600 px-6 py-4 flex justify-between items-center flex-shrink-0">
-                        <h2 className="text-white font-semibold text-lg">🎉 Баннер с акцией</h2>
+                    <div className="bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4 flex justify-between items-center flex-shrink-0">
+                        <h2 className="text-white font-semibold text-lg">🎉 Маркетинговый баннер</h2>
                         <button onClick={onClose} className="text-white/70 hover:text-white transition-colors">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -150,7 +194,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
 
                     {/* Scrollable Content */}
                     <div className="flex-1 overflow-y-auto p-8 bg-gray-100">
-                        <div className="bg-white shadow-lg" style={{ aspectRatio: '210/297' }}>
+                        <div className="bg-white shadow-lg rounded-lg overflow-hidden" style={{ aspectRatio: '210/297' }}>
                             <BannerContent />
                         </div>
                     </div>
@@ -166,7 +210,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         <button
                             onClick={handleDownloadPDF}
                             disabled={isGeneratingPdf}
-                            className="px-6 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 shadow-md flex items-center gap-2 disabled:opacity-50"
+                            className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-semibold hover:from-green-700 hover:to-emerald-700 shadow-md flex items-center gap-2 disabled:opacity-50"
                         >
                             {isGeneratingPdf ? (
                                 <span className="animate-pulse">Создание PDF...</span>
@@ -185,7 +229,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
 
             {/* Hidden PDF Container */}
             <div style={{ position: 'fixed', left: '-9999px', top: 0, zIndex: -1 }}>
-                <div id="promotion-banner-content" style={{ width: '210mm', height: '297mm', backgroundColor: 'white' }}>
+                <div id="promotion-banner-content" style={{ width: '210mm', height: '297mm', backgroundColor: '#0f172a' }}>
                     <BannerContent />
                 </div>
             </div>

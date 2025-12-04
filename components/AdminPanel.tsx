@@ -50,6 +50,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
         address: '', // Адрес
         customer: 'AllergoExpress ImmunoLab', // Заказчик
         sampleDate: new Date().toISOString().split('T')[0], // Дата взятия пробы
+        sampleTime: new Date().toTimeString().slice(0, 5), // Время взятия пробы
         registrationDate: new Date().toISOString().split('T')[0], // Дата регистрации
         date: new Date().toISOString().split('T')[0],
         medications: [] as { name: string; result: string; igE: string; level: string; class: string }[]
@@ -158,6 +159,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
                     address: '',
                     customer: 'AllergoExpress ImmunoLab',
                     sampleDate: new Date().toISOString().split('T')[0],
+                    sampleTime: new Date().toTimeString().slice(0, 5),
                     registrationDate: new Date().toISOString().split('T')[0],
                     date: new Date().toISOString().split('T')[0],
                     medications: []
@@ -314,6 +316,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
                                     type="date"
                                     value={formData.sampleDate}
                                     onChange={(e) => setFormData({ ...formData, sampleDate: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Время взятия пробы</label>
+                                <input
+                                    type="time"
+                                    value={formData.sampleTime}
+                                    onChange={(e) => setFormData({ ...formData, sampleTime: e.target.value })}
                                     className="w-full px-4 py-2 border rounded-lg"
                                 />
                             </div>
