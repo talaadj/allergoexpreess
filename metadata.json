@@ -1,0 +1,8 @@
+{
+  "name": "AllergoExpress Immunolab",
+  "description": "24/7 AI Medical Assistant for AllergoExpress Immunolab. Fast blood tests and allergy screening.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}
