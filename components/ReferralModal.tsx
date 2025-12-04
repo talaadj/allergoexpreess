@@ -153,8 +153,11 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
       {/* Drug List */}
       <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-[9px] mb-3 print:grid-cols-2 border-t border-b border-black py-1.5">
         {t.referralDrugs.map((drug, idx) => (
-          <label key={idx} className="flex items-center gap-1.5 cursor-pointer group p-0.5 rounded hover:bg-slate-50 print:hover:bg-transparent">
-            <div className={`w-2.5 h-2.5 border border-black flex items-center justify-center flex-shrink-0 ${formData.selectedDrugs.includes(drug) ? 'bg-black' : 'bg-white'} print-color-adjust-exact`}>
+          <label key={idx} className="flex items-start gap-1.5 cursor-pointer group p-0.5 rounded hover:bg-slate-50 print:hover:bg-transparent" style={{ lineHeight: '1.2' }}>
+            <div
+              className={`border border-black flex items-center justify-center ${formData.selectedDrugs.includes(drug) ? 'bg-black' : 'bg-white'} print-color-adjust-exact`}
+              style={{ width: '10px', height: '10px', minWidth: '10px', minHeight: '10px', marginTop: '1px' }}
+            >
               {formData.selectedDrugs.includes(drug) && <span className="text-white text-[7px] leading-none">✓</span>}
             </div>
             {!isPrint && (
@@ -165,7 +168,7 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                 className="hidden"
               />
             )}
-            <span className={`text-black leading-tight ${formData.selectedDrugs.includes(drug) ? 'font-bold' : ''}`}>
+            <span className={`text-black leading-tight ${formData.selectedDrugs.includes(drug) ? 'font-bold' : ''}`} style={{ lineHeight: '1.2' }}>
               {drug}
             </span>
           </label>
