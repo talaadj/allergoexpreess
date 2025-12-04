@@ -383,42 +383,76 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                 </div>
 
                                 {/* Signatures Section */}
-                                <div className="absolute bottom-4 left-8 right-8">
-                                    <div className="flex justify-between items-start mb-2">
+                                <div className="absolute bottom-2 left-8 right-8">
+                                    {/* Stamp and signatures row */}
+                                    <div className="flex justify-between items-start mb-1">
                                         {/* Stamp and signature - Left */}
-                                        <div className="relative" style={{ width: '180px' }}>
-                                            {/* Circular stamp - more accurate */}
-                                            <div className="absolute left-8 top-0 w-28 h-28 border-[3px] border-blue-600 rounded-full flex items-center justify-center" style={{ transform: 'rotate(12deg)' }}>
-                                                <div className="text-blue-600 text-[6px] text-center leading-[7px] font-bold">
-                                                    ЖШС<br />
-                                                    "РЕСПУБЛИКАЛЫҚ<br />
-                                                    КЛИНИКАЛЫҚ-<br />
-                                                    ЗЕРТХАНАЛЫҚ<br />
-                                                    ЗЕРТТЕУЛЕР<br />
-                                                    ОРТАЛЫҒЫ"
-                                                </div>
+                                        <div className="relative" style={{ width: '160px' }}>
+                                            {/* Circular stamp with text along circle */}
+                                            <div className="absolute left-4 -top-2" style={{ width: '90px', height: '90px', transform: 'rotate(10deg)' }}>
+                                                <svg viewBox="0 0 100 100" className="w-full h-full">
+                                                    {/* Outer circle */}
+                                                    <circle cx="50" cy="50" r="48" fill="none" stroke="#1e40af" strokeWidth="2.5" />
+                                                    {/* Inner circle */}
+                                                    <circle cx="50" cy="50" r="42" fill="none" stroke="#1e40af" strokeWidth="0.5" />
+
+                                                    {/* Text along top arc */}
+                                                    <defs>
+                                                        <path id="topArc" d="M 10,50 A 40,40 0 0,1 90,50" fill="none" />
+                                                        <path id="bottomArc" d="M 90,50 A 40,40 0 0,1 10,50" fill="none" />
+                                                    </defs>
+
+                                                    <text className="fill-blue-700 font-bold" style={{ fontSize: '5px' }}>
+                                                        <textPath href="#topArc" startOffset="50%" textAnchor="middle">
+                                                            ЖШС "РЕСПУБЛИКАЛЫҚ КЛИНИКАЛЫҚ-
+                                                        </textPath>
+                                                    </text>
+
+                                                    <text className="fill-blue-700 font-bold" style={{ fontSize: '5px' }}>
+                                                        <textPath href="#bottomArc" startOffset="50%" textAnchor="middle">
+                                                            ЗЕРТХАНАЛЫҚ ЗЕРТТЕУЛЕР ОРТАЛЫҒЫ"
+                                                        </textPath>
+                                                    </text>
+
+                                                    {/* Center text */}
+                                                    <text x="50" y="48" textAnchor="middle" className="fill-blue-700 font-bold" style={{ fontSize: '6px' }}>ДЛЯ</text>
+                                                    <text x="50" y="55" textAnchor="middle" className="fill-blue-700 font-bold" style={{ fontSize: '6px' }}>АНАЛИЗОВ</text>
+                                                </svg>
                                             </div>
-                                            <div className="pt-24 text-center">
-                                                <div className="text-[8px] leading-tight">
+                                            <div className="pt-20 text-center">
+                                                <div className="text-[7px] leading-tight">
                                                     <p>Орындаушы (Исполнитель)</p>
-                                                    <p className="mt-0.5">Performer: _____________</p>
+                                                    <p className="text-[6px]">Performer: _____________</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Doctor signature - Right */}
-                                        <div className="text-center" style={{ width: '180px' }}>
-                                            <div className="h-24"></div>
-                                            <div className="text-[8px] leading-tight">
+                                        <div className="text-center" style={{ width: '160px' }}>
+                                            <div className="h-20"></div>
+                                            <div className="text-[7px] leading-tight">
                                                 <p>Дәрігер (Врач)</p>
-                                                <p className="mt-0.5">Doctor: _____________</p>
+                                                <p className="text-[6px]">Doctor: _____________</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    {/* Footer info - exactly as in original */}
-                                    <div className="border-t border-gray-300 pt-1 text-[6px] text-gray-700 leading-[7px]">
-                                        <p>Данное заключение является предварительным и не может использоваться как окончательный диагноз без консультации врача. Результаты исследования предназначены только для лечащего врача и не могут быть использованы для самодиагностики и самолечения.</p>
+                                    {/* Footer - Three languages warning */}
+                                    <div className="border-t border-gray-400 pt-0.5">
+                                        <div className="grid grid-cols-3 gap-2 text-[5px] leading-[6px] text-gray-600">
+                                            <div>
+                                                <p className="font-semibold mb-0.5">Қазақша:</p>
+                                                <p>Бұл қорытынды алдын ала болып табылады және дәрігермен кеңеспестен соңғы диагноз ретінде пайдаланылмауы тиіс. Зерттеу нәтижелері тек емдеуші дәрігерге арналған және өзін-өзі диагностикалау мен өзін-өзі емдеуге пайдаланылмауы керек.</p>
+                                            </div>
+                                            <div>
+                                                <p className="font-semibold mb-0.5">Русский:</p>
+                                                <p>Данное заключение является предварительным и не может использоваться как окончательный диагноз без консультации врача. Результаты исследования предназначены только для лечащего врача и не могут быть использованы для самодиагностики и самолечения.</p>
+                                            </div>
+                                            <div>
+                                                <p className="font-semibold mb-0.5">English:</p>
+                                                <p>This conclusion is preliminary and cannot be used as a final diagnosis without consulting a doctor. The test results are intended only for the attending physician and cannot be used for self-diagnosis and self-treatment.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
