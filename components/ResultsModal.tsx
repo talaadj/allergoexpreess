@@ -383,43 +383,42 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                 </div>
 
                                 {/* Signatures Section */}
-                                <div className="absolute bottom-8 left-8 right-8">
-                                    <div className="flex justify-between items-end">
-                                        {/* Stamp and signature */}
-                                        <div className="text-center relative" style={{ width: '200px' }}>
-                                            {/* Circular stamp */}
-                                            <div className="absolute left-1/2 top-0 transform -translate-x-1/2 w-32 h-32 border-2 border-blue-600 rounded-full flex items-center justify-center opacity-70" style={{ transform: 'translate(-50%, -20%) rotate(15deg)' }}>
-                                                <div className="text-blue-600 text-[7px] text-center leading-tight font-bold">
-                                                    РЕСПУБЛИКАНСКИЙ<br />
-                                                    ЦЕНТР КЛИНИКО-<br />
-                                                    ЛАБОРАТОРНЫХ<br />
-                                                    ИССЛЕДОВАНИЙ<br />
-                                                    ДЛЯ АНАЛИЗОВ
+                                <div className="absolute bottom-4 left-8 right-8">
+                                    <div className="flex justify-between items-start mb-2">
+                                        {/* Stamp and signature - Left */}
+                                        <div className="relative" style={{ width: '180px' }}>
+                                            {/* Circular stamp - more accurate */}
+                                            <div className="absolute left-8 top-0 w-28 h-28 border-[3px] border-blue-600 rounded-full flex items-center justify-center" style={{ transform: 'rotate(12deg)' }}>
+                                                <div className="text-blue-600 text-[6px] text-center leading-[7px] font-bold">
+                                                    ЖШС<br />
+                                                    "РЕСПУБЛИКАЛЫҚ<br />
+                                                    КЛИНИКАЛЫҚ-<br />
+                                                    ЗЕРТХАНАЛЫҚ<br />
+                                                    ЗЕРТТЕУЛЕР<br />
+                                                    ОРТАЛЫҒЫ"
                                                 </div>
                                             </div>
-                                            <div className="h-16"></div>
-                                            <div className="border-t border-gray-400 pt-1 text-[9px]">
-                                                Орындаушы (Исполнитель)<br />
-                                                <span className="text-[8px]">Performer: A.S.</span>
+                                            <div className="pt-24 text-center">
+                                                <div className="text-[8px] leading-tight">
+                                                    <p>Орындаушы (Исполнитель)</p>
+                                                    <p className="mt-0.5">Performer: _____________</p>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        {/* Doctor signature */}
-                                        <div className="text-center" style={{ width: '200px' }}>
-                                            <div className="h-16 flex items-end justify-center">
-                                                <div className="text-gray-400 italic text-sm">подпись</div>
-                                            </div>
-                                            <div className="border-t border-gray-400 pt-1 text-[9px]">
-                                                Дәрігер (Врач)<br />
-                                                <span className="text-[8px]">Doctor: A.S.</span>
+                                        {/* Doctor signature - Right */}
+                                        <div className="text-center" style={{ width: '180px' }}>
+                                            <div className="h-24"></div>
+                                            <div className="text-[8px] leading-tight">
+                                                <p>Дәрігер (Врач)</p>
+                                                <p className="mt-0.5">Doctor: _____________</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    {/* Footer info */}
-                                    <div className="mt-4 text-[7px] text-gray-600 leading-tight">
-                                        <p>Данное заключение является предварительным и не может использоваться как окончательный диагноз без консультации врача.</p>
-                                        <p>Результаты исследования предназначены только для лечащего врача и не могут быть использованы для самодиагностики и самолечения.</p>
+                                    {/* Footer info - exactly as in original */}
+                                    <div className="border-t border-gray-300 pt-1 text-[6px] text-gray-700 leading-[7px]">
+                                        <p>Данное заключение является предварительным и не может использоваться как окончательный диагноз без консультации врача. Результаты исследования предназначены только для лечащего врача и не могут быть использованы для самодиагностики и самолечения.</p>
                                     </div>
                                 </div>
                             </div>
