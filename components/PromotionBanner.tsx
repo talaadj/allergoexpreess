@@ -69,7 +69,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                     <div className="flex items-center justify-center gap-4 relative">
                         <span className="text-yellow-300 text-3xl">⚡</span>
                         <p className="text-white text-2xl font-black uppercase tracking-wide">
-                            Только до 31 декабря!
+                            Только до 10 января 2026!
                         </p>
                         <span className="text-yellow-300 text-3xl">⚡</span>
                     </div>
@@ -83,8 +83,8 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         </span>
                     </div>
 
-                    <h2 className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 mb-4 leading-tight">
-                        -20%
+                    <h2 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 mb-4 leading-tight">
+                        СКИДКА
                     </h2>
 
                     <p className="text-3xl text-white font-bold mb-2">
@@ -103,7 +103,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         <div className="text-6xl text-green-400">→</div>
                         <div className="text-center">
                             <p className="text-green-400 text-sm mb-1 font-bold">Стало</p>
-                            <p className="text-5xl text-white font-black">6 400 ₸</p>
+                            <p className="text-5xl text-white font-black">7 000 ₸</p>
                         </div>
                     </div>
 
@@ -114,12 +114,12 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                             <span className="text-white font-semibold">Результат за 2 часа</span>
                         </div>
                         <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
-                            <span className="text-2xl">🏥</span>
-                            <span className="text-white font-semibold">Выезд на дом</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
                             <span className="text-2xl">✅</span>
                             <span className="text-white font-semibold">100% точность</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+                            <span className="text-2xl">🔬</span>
+                            <span className="text-white font-semibold">Современное оборудование</span>
                         </div>
                     </div>
                 </div>
@@ -157,12 +157,12 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         <div className="flex flex-col items-center">
                             <div className="bg-white p-2 rounded-xl shadow-lg">
                                 <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?data=https://wa.me/77075186088&size=100x100"
-                                    alt="WhatsApp QR"
+                                    src="https://api.qrserver.com/v1/create-qr-code/?data=https://allergoexpressmed.vercel.app&size=100x100"
+                                    alt="Website QR"
                                     className="w-20 h-20"
                                 />
                             </div>
-                            <p className="text-white text-xs mt-2 font-semibold">📱 WhatsApp</p>
+                            <p className="text-white text-xs mt-2 font-semibold">🌐 Наш сайт</p>
                         </div>
                     </div>
                 </div>
