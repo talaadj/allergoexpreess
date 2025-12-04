@@ -387,79 +387,84 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                     <p>6 класс: &gt; 100.0 МЕ/мл — чрезвычайно (исключительно) высокий уровень (тяжелые клинические проявления)</p>
                                 </div>
 
-                                {/* QR Code - positioned absolutely on the right */}
-                                <div className="absolute right-8 bottom-32">
-                                    <QRCodeCanvas
-                                        value={`https://allergoexpressmed.vercel.app?orderId=${result.orderId}`}
-                                        size={80}
-                                        level={"H"}
-                                        includeMargin={false}
-                                    />
-                                    <div className="text-[8px] text-center mt-1 font-mono">{result.orderId}</div>
-                                </div>
+                                {/* Footer Section with QR and Signatures - Now part of the flow, not absolute */}
+                                <div className="mt-8 break-inside-avoid">
+                                    <div className="flex justify-between items-end mb-6 px-8">
+                                        {/* Signatures Section */}
+                                        <div className="flex-1">
+                                            {/* Stamp and signatures row */}
+                                            <div className="flex justify-between items-start">
+                                                {/* Stamp and signature - Left */}
+                                                <div className="relative" style={{ width: '160px' }}>
+                                                    {/* Official circular stamp */}
+                                                    <div className="absolute left-2 -top-4" style={{ width: '100px', height: '100px', transform: 'rotate(-8deg)' }}>
+                                                        <svg viewBox="0 0 120 120" className="w-full h-full">
+                                                            {/* Outer double circle */}
+                                                            <circle cx="60" cy="60" r="56" fill="none" stroke="#1e3a8a" strokeWidth="3" opacity="0.85" />
+                                                            <circle cx="60" cy="60" r="52" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
 
-                                {/* Signatures Section */}
-                                <div className="absolute bottom-2 left-8 right-8">
-                                    {/* Stamp and signatures row */}
-                                    <div className="flex justify-between items-start mb-1">
-                                        {/* Stamp and signature - Left */}
-                                        <div className="relative" style={{ width: '160px' }}>
-                                            {/* Official circular stamp */}
-                                            <div className="absolute left-2 -top-4" style={{ width: '100px', height: '100px', transform: 'rotate(-8deg)' }}>
-                                                <svg viewBox="0 0 120 120" className="w-full h-full">
-                                                    {/* Outer double circle */}
-                                                    <circle cx="60" cy="60" r="56" fill="none" stroke="#1e3a8a" strokeWidth="3" opacity="0.85" />
-                                                    <circle cx="60" cy="60" r="52" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
+                                                            {/* Inner circle */}
+                                                            <circle cx="60" cy="60" r="40" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
 
-                                                    {/* Inner circle */}
-                                                    <circle cx="60" cy="60" r="40" fill="none" stroke="#1e3a8a" strokeWidth="1" opacity="0.85" />
+                                                            {/* Top text path */}
+                                                            <defs>
+                                                                <path id="topCircle" d="M 14,60 A 46,46 0 0,1 106,60" fill="none" />
+                                                                <path id="bottomCircle" d="M 106,60 A 46,46 0 0,1 14,60" fill="none" />
+                                                            </defs>
 
-                                                    {/* Top text path */}
-                                                    <defs>
-                                                        <path id="topCircle" d="M 14,60 A 46,46 0 0,1 106,60" fill="none" />
-                                                        <path id="bottomCircle" d="M 106,60 A 46,46 0 0,1 14,60" fill="none" />
-                                                    </defs>
+                                                            {/* Top arc text */}
+                                                            <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
+                                                                <textPath href="#topCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '7px' }}>
+                                                                    ★ ALLERGOEXPRESS IMMUNOLAB ★
+                                                                </textPath>
+                                                            </text>
 
-                                                    {/* Top arc text */}
-                                                    <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
-                                                        <textPath href="#topCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '7px' }}>
-                                                            ★ ALLERGOEXPRESS IMMUNOLAB ★
-                                                        </textPath>
-                                                    </text>
+                                                            {/* Bottom arc text */}
+                                                            <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
+                                                                <textPath href="#bottomCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '6px' }}>
+                                                                    г.АЛМАТЫ • ЛИЦЕНЗИЯ №21019421
+                                                                </textPath>
+                                                            </text>
 
-                                                    {/* Bottom arc text */}
-                                                    <text fill="#1e3a8a" fontWeight="bold" opacity="0.85">
-                                                        <textPath href="#bottomCircle" startOffset="50%" textAnchor="middle" style={{ fontSize: '6px' }}>
-                                                            г.АЛМАТЫ • ЛИЦЕНЗИЯ №21019421
-                                                        </textPath>
-                                                    </text>
+                                                            {/* Center content */}
+                                                            <text x="60" y="52" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>ДЛЯ</text>
+                                                            <text x="60" y="62" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>АНАЛИЗОВ</text>
+                                                            <text x="60" y="72" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '6px' }}>ТОО</text>
+                                                        </svg>
+                                                    </div>
+                                                    <div className="pt-24 text-center">
+                                                        <div className="text-[7px] leading-tight">
+                                                            <p>Орындаушы (Исполнитель)</p>
+                                                            <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                    {/* Center content */}
-                                                    <text x="60" y="52" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>ДЛЯ</text>
-                                                    <text x="60" y="62" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '8px' }}>АНАЛИЗОВ</text>
-                                                    <text x="60" y="72" textAnchor="middle" fill="#1e3a8a" fontWeight="bold" opacity="0.85" style={{ fontSize: '6px' }}>ТОО</text>
-                                                </svg>
-                                            </div>
-                                            <div className="pt-24 text-center">
-                                                <div className="text-[7px] leading-tight">
-                                                    <p>Орындаушы (Исполнитель)</p>
-                                                    <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
+                                                {/* Doctor signature - Center/Right */}
+                                                <div className="text-center" style={{ width: '160px' }}>
+                                                    <div className="h-24"></div>
+                                                    <div className="text-[7px] leading-tight">
+                                                        <p>Дәрігер (Врач)</p>
+                                                        <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* Doctor signature - Right */}
-                                        <div className="text-center" style={{ width: '160px' }}>
-                                            <div className="h-24"></div>
-                                            <div className="text-[7px] leading-tight">
-                                                <p>Дәрігер (Врач)</p>
-                                                <p className="text-[6px] mt-1 border-b border-gray-400 pb-1">_________________________</p>
-                                            </div>
+                                        {/* QR Code - Right aligned in flex container */}
+                                        <div className="ml-4 flex flex-col items-center justify-end pb-2">
+                                            <QRCodeCanvas
+                                                value={`https://allergoexpressmed.vercel.app?orderId=${result.orderId}`}
+                                                size={80}
+                                                level={"H"}
+                                                includeMargin={false}
+                                            />
+                                            <div className="text-[8px] text-center mt-1 font-mono">{result.orderId}</div>
                                         </div>
                                     </div>
 
                                     {/* Footer - Three languages warning */}
-                                    <div className="border-t border-gray-400 pt-0.5">
+                                    <div className="border-t border-gray-400 pt-0.5 px-8 pb-4">
                                         <div className="grid grid-cols-3 gap-2 text-[5px] leading-[6px] text-gray-600">
                                             <div>
                                                 <p className="font-semibold mb-0.5">Қазақша:</p>
