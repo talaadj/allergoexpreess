@@ -153,6 +153,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
                     patientName: '',
                     phone: '',
                     birthDate: '',
+                    iin: '',
+                    gender: 'Мужской',
+                    address: '',
+                    customer: 'AllergoExpress ImmunoLab',
+                    sampleDate: new Date().toISOString().split('T')[0],
+                    registrationDate: new Date().toISOString().split('T')[0],
                     date: new Date().toISOString().split('T')[0],
                     medications: []
                 });
