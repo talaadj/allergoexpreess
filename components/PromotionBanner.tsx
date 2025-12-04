@@ -38,7 +38,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
     };
 
     const BannerContent = () => (
-        <div className="w-full h-full relative overflow-hidden print-color-adjust-exact" style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }}>
+        <div className="w-full h-full relative overflow-hidden print-color-adjust-exact" style={{ background: 'linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%)' }}>
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at 30% 20%, #22c55e 0%, transparent 50%), radial-gradient(circle at 70% 80%, #3b82f6 0%, transparent 50%)' }}></div>
 
@@ -151,7 +151,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                     <div className="flex items-center justify-between relative">
                         <div>
                             <p className="text-white/80 text-sm mb-1">Звоните прямо сейчас!</p>
-                            <p className="text-3xl font-black text-white">+7 (707) 518 60 88</p>
+                            <p className="text-3xl font-black text-white">+7 707 566 88 99</p>
                             <p className="text-white/80 text-sm mt-1">📧 allergoexpress.immunolab@gmail.com</p>
                         </div>
                         <div className="flex flex-col items-center">
