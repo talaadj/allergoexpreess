@@ -45,6 +45,12 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
         patientName: '',
         phone: '',
         birthDate: '',
+        iin: '', // ИИН
+        gender: 'Мужской', // Пол
+        address: '', // Адрес
+        customer: 'AllergoExpress ImmunoLab', // Заказчик
+        sampleDate: new Date().toISOString().split('T')[0], // Дата взятия пробы
+        registrationDate: new Date().toISOString().split('T')[0], // Дата регистрации
         date: new Date().toISOString().split('T')[0],
         medications: [] as { name: string; result: string; igE: string; level: string; class: string }[]
     });
@@ -233,6 +239,28 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
                                 />
                             </div>
                             <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">ИИН (Индивидуальный идентификационный номер)</label>
+                                <input
+                                    type="text"
+                                    value={formData.iin}
+                                    onChange={(e) => setFormData({ ...formData, iin: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                    placeholder="123456789012"
+                                    maxLength={12}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Пол</label>
+                                <select
+                                    value={formData.gender}
+                                    onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                >
+                                    <option value="Мужской">Мужской</option>
+                                    <option value="Женский">Женский</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label className="block text-sm font-medium text-slate-700 mb-1">Телефон</label>
                                 <input
                                     type="text"
@@ -248,6 +276,47 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ lang = 'ru', onClose }) 
                                     type="date"
                                     value={formData.birthDate}
                                     onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Адрес</label>
+                                <input
+                                    type="text"
+                                    value={formData.address}
+                                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                    placeholder="г. Алматы, ул. ..."
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Заказчик</label>
+                                <select
+                                    value={formData.customer}
+                                    onChange={(e) => setFormData({ ...formData, customer: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                >
+                                    <option value="AllergoExpress ImmunoLab">AllergoExpress ImmunoLab</option>
+                                    <option value="Частное лицо">Частное лицо</option>
+                                    <option value="Медицинский центр">Медицинский центр</option>
+                                    <option value="Стоматологическая клиника">Стоматологическая клиника</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Дата взятия пробы</label>
+                                <input
+                                    type="date"
+                                    value={formData.sampleDate}
+                                    onChange={(e) => setFormData({ ...formData, sampleDate: e.target.value })}
+                                    className="w-full px-4 py-2 border rounded-lg"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Дата регистрации</label>
+                                <input
+                                    type="date"
+                                    value={formData.registrationDate}
+                                    onChange={(e) => setFormData({ ...formData, registrationDate: e.target.value })}
                                     className="w-full px-4 py-2 border rounded-lg"
                                 />
                             </div>

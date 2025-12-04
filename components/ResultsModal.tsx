@@ -26,6 +26,12 @@ interface OrderResult {
     status: 'ready' | 'processing';
     medications: string[];
     results: TestResult[];
+    iin?: string;
+    gender?: string;
+    address?: string;
+    customer?: string;
+    sampleDate?: string;
+    registrationDate?: string;
 }
 
 export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrderId, lang = 'ru' }) => {
@@ -76,6 +82,12 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                     birthDate: data.birth_date || '',
                     date: data.date || '',
                     status: 'ready',
+                    iin: data.iin || '',
+                    gender: data.gender || '',
+                    address: data.address || '',
+                    customer: data.customer || '',
+                    sampleDate: data.sample_date || '',
+                    registrationDate: data.registration_date || '',
                     medications: medications.map((m: any) => m.name || ''),
                     results: medications.map((m: any) => ({
                         medication: m.name || '',
@@ -267,15 +279,19 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>ЖСН (ИИН):</span>
-                                            <span>{result.birthDate?.replace(/-/g, '') || '-'}</span>
+                                            <span>{result.iin || result.birthDate?.replace(/-/g, '') || '-'}</span>
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>Туған күні (Дата рождения):</span>
                                             <span>{result.birthDate || '-'}</span>
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
+                                            <span>Жынысы (Пол):</span>
+                                            <span>{result.gender || '-'}</span>
+                                        </div>
+                                        <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>Мекен-жайы (Адрес):</span>
-                                            <span>г. Алматы</span>
+                                            <span>{result.address || 'г. Алматы'}</span>
                                         </div>
                                     </div>
 
@@ -283,7 +299,7 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         <p className="font-bold mb-1">Жалпы ақпарат (Общая информация):</p>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>Тапсырыс беруші (Заказчик):</span>
-                                            <span>AllergoExpress</span>
+                                            <span>{result.customer || 'AllergoExpress'}</span>
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>Дәрігер (Врач):</span>
@@ -301,7 +317,11 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         </div>
                                         <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
                                             <span>Үлгіні алу уақыты:</span>
-                                            <span>{result.date}</span>
+                                            <span>{result.sampleDate || result.date}</span>
+                                        </div>
+                                        <div className="flex justify-between border-b border-dotted border-gray-400 pb-0.5">
+                                            <span>Тіркелген уақыты:</span>
+                                            <span>{result.registrationDate || result.date}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -361,25 +381,15 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                     <p>6 класс: &gt; 100.0 МЕ/мл — чрезвычайно (исключительно) высокий уровень (тяжелые клинические проявления)</p>
                                 </div>
 
-                                {/* Barcode - positioned absolutely on the right */}
-                                <div className="absolute right-8 bottom-32" style={{ width: '80px' }}>
-                                    <svg className="w-full h-24" viewBox="0 0 100 120">
-                                        {/* Simple barcode representation */}
-                                        <rect x="5" y="0" width="3" height="100" fill="black" />
-                                        <rect x="12" y="0" width="2" height="100" fill="black" />
-                                        <rect x="18" y="0" width="4" height="100" fill="black" />
-                                        <rect x="26" y="0" width="2" height="100" fill="black" />
-                                        <rect x="32" y="0" width="3" height="100" fill="black" />
-                                        <rect x="39" y="0" width="2" height="100" fill="black" />
-                                        <rect x="45" y="0" width="4" height="100" fill="black" />
-                                        <rect x="53" y="0" width="2" height="100" fill="black" />
-                                        <rect x="59" y="0" width="3" height="100" fill="black" />
-                                        <rect x="66" y="0" width="2" height="100" fill="black" />
-                                        <rect x="72" y="0" width="4" height="100" fill="black" />
-                                        <rect x="80" y="0" width="2" height="100" fill="black" />
-                                        <rect x="86" y="0" width="3" height="100" fill="black" />
-                                        <text x="50" y="115" fontSize="8" textAnchor="middle" fill="black">{result.orderId}</text>
-                                    </svg>
+                                {/* QR Code - positioned absolutely on the right */}
+                                <div className="absolute right-8 bottom-32">
+                                    <QRCodeCanvas
+                                        value={`https://allergoexpressmed.vercel.app?orderId=${result.orderId}`}
+                                        size={80}
+                                        level={"H"}
+                                        includeMargin={false}
+                                    />
+                                    <div className="text-[8px] text-center mt-1 font-mono">{result.orderId}</div>
                                 </div>
 
                                 {/* Signatures Section */}
