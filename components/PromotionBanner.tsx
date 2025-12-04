@@ -83,7 +83,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         </span>
                     </div>
 
-                    <h2 className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-green-400 mb-4 leading-tight">
+                    <h2 className="text-6xl font-black text-green-400 mb-4 leading-tight" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.5)' }}>
                         СКИДКА
                     </h2>
 
@@ -115,7 +115,7 @@ export const PromotionBanner: React.FC<PromotionBannerProps> = ({ isOpen, onClos
                         </div>
                         <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
                             <span className="text-2xl">✅</span>
-                            <span className="text-white font-semibold">100% точность</span>
+                            <span className="text-white font-semibold">95% точность</span>
                         </div>
                         <div className="flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
                             <span className="text-2xl">🔬</span>
