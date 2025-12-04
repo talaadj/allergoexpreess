@@ -243,10 +243,6 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                 <div className="flex justify-between items-start mb-4 pb-3 border-b-2 border-green-600">
                                     <div className="flex items-center gap-3">
                                         <img src="/logo-full.png" alt="Logo" className="h-20" />
-                                        <div>
-                                            <h1 className="text-xl font-bold text-green-700">AllergoExpress</h1>
-                                            <h2 className="text-lg font-bold text-green-800">ImmunoLab</h2>
-                                        </div>
                                     </div>
 
                                     {/* Blood drop icon */}
