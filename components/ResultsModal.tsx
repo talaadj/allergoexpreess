@@ -245,15 +245,22 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         <img src="/logo-full.png" alt="Logo" className="h-20" />
                                     </div>
 
-                                    {/* Blood drops icon - 3 drops dripping */}
-                                    <div className="w-16 h-16 bg-red-50 rounded-lg flex flex-col items-center justify-center border-2 border-red-200 p-1 gap-0.5">
-                                        <svg className="w-4 h-4 text-red-500 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                                    {/* Blood drops icon - 3 drops pattern */}
+                                    <div className="w-16 h-16 bg-red-50 rounded-lg relative border-2 border-red-200">
+                                        {/* Large drop - top left */}
+                                        <svg className="w-8 h-8 text-red-600 absolute top-2 left-2" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                            {/* Highlight */}
+                                            <path d="M8 10a4 4 0 0 1 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
                                         </svg>
-                                        <svg className="w-5 h-5 text-red-600 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                                        {/* Medium drop - right middle */}
+                                        <svg className="w-6 h-6 text-red-600 absolute top-6 right-2" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                            {/* Highlight */}
+                                            <path d="M8 10a4 4 0 0 1 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5" />
                                         </svg>
-                                        <svg className="w-6 h-6 text-red-700" fill="currentColor" viewBox="0 0 24 24">
+                                        {/* Small drop - bottom center */}
+                                        <svg className="w-4 h-4 text-red-600 absolute bottom-2 left-1/2 transform -translate-x-1/2" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
                                         </svg>
                                     </div>
