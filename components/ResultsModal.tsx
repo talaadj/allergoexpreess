@@ -245,19 +245,17 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         <img src="/logo-full.png" alt="Logo" className="h-20" />
                                     </div>
 
-                                    {/* Blood drops icon - 3 drops in square */}
-                                    <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center border-2 border-red-300 p-1">
-                                        <div className="grid grid-cols-2 gap-0.5">
-                                            <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                                            </svg>
-                                            <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                                            </svg>
-                                            <svg className="w-6 h-6 text-red-600 col-span-2 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                                            </svg>
-                                        </div>
+                                    {/* Blood drops icon - 3 drops dripping */}
+                                    <div className="w-16 h-16 bg-red-50 rounded-lg flex flex-col items-center justify-center border-2 border-red-200 p-1 gap-0.5">
+                                        <svg className="w-4 h-4 text-red-500 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                        </svg>
+                                        <svg className="w-5 h-5 text-red-600 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                        </svg>
+                                        <svg className="w-6 h-6 text-red-700" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                        </svg>
                                     </div>
 
                                     <div className="text-right text-[9px] leading-tight max-w-[200px]">
