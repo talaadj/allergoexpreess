@@ -161,28 +161,28 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                 rows.push(
                   <tr key={i}>
                     <td style={{ padding: '2px 4px', verticalAlign: 'top', width: '50%' }}>
-                      <label className="cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
+                      <label className="flex items-start gap-1.5 cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
                         <span
-                          className={`inline-block border border-black text-center align-middle print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i]) ? 'bg-black text-white' : 'bg-white'}`}
-                          style={{ width: '10px', height: '10px', lineHeight: '10px', fontSize: '7px', marginRight: '4px' }}
+                          className={`flex-shrink-0 border border-black flex items-center justify-center print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i]) ? 'bg-black text-white' : 'bg-white'}`}
+                          style={{ width: '10px', height: '10px', fontSize: '7px', marginTop: '1.5px' }}
                         >
                           {formData.selectedDrugs.includes(drugs[i]) ? '✓' : ''}
                         </span>
-                        <span className={`text-black ${formData.selectedDrugs.includes(drugs[i]) ? 'font-bold' : ''}`}>
+                        <span className={`text-black leading-tight ${formData.selectedDrugs.includes(drugs[i]) ? 'font-bold' : ''}`}>
                           {drugs[i]}
                         </span>
                       </label>
                     </td>
                     {drugs[i + 1] && (
                       <td style={{ padding: '2px 4px', verticalAlign: 'top', width: '50%' }}>
-                        <label className="cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
+                        <label className="flex items-start gap-1.5 cursor-pointer group" onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
                           <span
-                            className={`inline-block border border-black text-center align-middle print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'bg-black text-white' : 'bg-white'}`}
-                            style={{ width: '10px', height: '10px', lineHeight: '10px', fontSize: '7px', marginRight: '4px' }}
+                            className={`flex-shrink-0 border border-black flex items-center justify-center print-color-adjust-exact ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'bg-black text-white' : 'bg-white'}`}
+                            style={{ width: '10px', height: '10px', fontSize: '7px', marginTop: '1.5px' }}
                           >
                             {formData.selectedDrugs.includes(drugs[i + 1]) ? '✓' : ''}
                           </span>
-                          <span className={`text-black ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'font-bold' : ''}`}>
+                          <span className={`text-black leading-tight ${formData.selectedDrugs.includes(drugs[i + 1]) ? 'font-bold' : ''}`}>
                             {drugs[i + 1]}
                           </span>
                         </label>
