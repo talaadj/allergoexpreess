@@ -161,7 +161,7 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                 rows.push(
                   <tr key={i}>
                     {/* Column 1: Checkbox */}
-                    <td style={{ width: '15px', padding: '2px 0 2px 4px', verticalAlign: 'top' }}>
+                    <td style={{ width: '12px', padding: '2px 0 2px 0', verticalAlign: 'top' }}>
                       <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
                         <svg width="10" height="10" style={{ display: 'block', marginTop: '2px' }}>
                           <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
@@ -172,7 +172,7 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                       </div>
                     </td>
                     {/* Column 2: Name */}
-                    <td style={{ width: '45%', padding: '2px 4px', verticalAlign: 'top' }}>
+                    <td style={{ width: '50%', padding: '2px 8px 2px 2px', verticalAlign: 'top' }}>
                       <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
                         <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i]) ? 'bold' : 'normal', lineHeight: '1.3', display: 'block' }}>
                           {drugs[i]}
@@ -182,7 +182,7 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
 
                     {/* Column 3: Checkbox (if exists) */}
                     {drugs[i + 1] ? (
-                      <td style={{ width: '15px', padding: '2px 0 2px 4px', verticalAlign: 'top' }}>
+                      <td style={{ width: '12px', padding: '2px 0 2px 0', verticalAlign: 'top' }}>
                         <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
                           <svg width="10" height="10" style={{ display: 'block', marginTop: '2px' }}>
                             <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i + 1]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
@@ -193,12 +193,12 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                         </div>
                       </td>
                     ) : (
-                      <td style={{ width: '15px' }}></td>
+                      <td style={{ width: '12px' }}></td>
                     )}
 
                     {/* Column 4: Name (if exists) */}
                     {drugs[i + 1] ? (
-                      <td style={{ width: '45%', padding: '2px 4px', verticalAlign: 'top' }}>
+                      <td style={{ width: '50%', padding: '2px 0 2px 2px', verticalAlign: 'top' }}>
                         <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
                           <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i + 1]) ? 'bold' : 'normal', lineHeight: '1.3', display: 'block' }}>
                             {drugs[i + 1]}
@@ -206,7 +206,7 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
                         </div>
                       </td>
                     ) : (
-                      <td style={{ width: '45%' }}></td>
+                      <td style={{ width: '50%' }}></td>
                     )}
                   </tr>
                 );
