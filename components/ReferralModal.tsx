@@ -160,37 +160,53 @@ export const ReferralModal: React.FC<ReferralModalProps> = ({ isOpen, onClose, l
               for (let i = 0; i < drugs.length; i += 2) {
                 rows.push(
                   <tr key={i}>
-                    <td style={{ padding: '3px 4px 3px 20px', verticalAlign: 'top', width: '50%', position: 'relative' }}>
-                      <label style={{ cursor: 'pointer', display: 'block' }} onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
-                        <div style={{ position: 'absolute', left: '4px', top: '4px', width: '10px', height: '10px' }}>
-                          <svg width="10" height="10">
-                            <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
-                            {formData.selectedDrugs.includes(drugs[i]) && (
+                    {/* Column 1: Checkbox */}
+                    <td style={{ width: '15px', padding: '2px 0 2px 4px', verticalAlign: 'top' }}>
+                      <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
+                        <svg width="10" height="10" style={{ display: 'block', marginTop: '2px' }}>
+                          <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
+                          {formData.selectedDrugs.includes(drugs[i]) && (
+                            <text x="5" y="8" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">✓</text>
+                          )}
+                        </svg>
+                      </div>
+                    </td>
+                    {/* Column 2: Name */}
+                    <td style={{ width: '45%', padding: '2px 4px', verticalAlign: 'top' }}>
+                      <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i])}>
+                        <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i]) ? 'bold' : 'normal', lineHeight: '1.3', display: 'block' }}>
+                          {drugs[i]}
+                        </span>
+                      </div>
+                    </td>
+
+                    {/* Column 3: Checkbox (if exists) */}
+                    {drugs[i + 1] ? (
+                      <td style={{ width: '15px', padding: '2px 0 2px 4px', verticalAlign: 'top' }}>
+                        <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
+                          <svg width="10" height="10" style={{ display: 'block', marginTop: '2px' }}>
+                            <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i + 1]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
+                            {formData.selectedDrugs.includes(drugs[i + 1]) && (
                               <text x="5" y="8" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">✓</text>
                             )}
                           </svg>
                         </div>
-                        <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i]) ? 'bold' : 'normal', lineHeight: '1.4', display: 'block' }}>
-                          {drugs[i]}
-                        </span>
-                      </label>
-                    </td>
-                    {drugs[i + 1] && (
-                      <td style={{ padding: '3px 4px 3px 20px', verticalAlign: 'top', width: '50%', position: 'relative' }}>
-                        <label style={{ cursor: 'pointer', display: 'block' }} onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
-                          <div style={{ position: 'absolute', left: '4px', top: '4px', width: '10px', height: '10px' }}>
-                            <svg width="10" height="10">
-                              <rect x="0" y="0" width="10" height="10" fill={formData.selectedDrugs.includes(drugs[i + 1]) ? '#000' : '#fff'} stroke="#000" strokeWidth="1" />
-                              {formData.selectedDrugs.includes(drugs[i + 1]) && (
-                                <text x="5" y="8" textAnchor="middle" fill="#fff" fontSize="8" fontWeight="bold">✓</text>
-                              )}
-                            </svg>
-                          </div>
-                          <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i + 1]) ? 'bold' : 'normal', lineHeight: '1.4', display: 'block' }}>
+                      </td>
+                    ) : (
+                      <td style={{ width: '15px' }}></td>
+                    )}
+
+                    {/* Column 4: Name (if exists) */}
+                    {drugs[i + 1] ? (
+                      <td style={{ width: '45%', padding: '2px 4px', verticalAlign: 'top' }}>
+                        <div style={{ cursor: 'pointer' }} onClick={() => !isPrint && handleDrugToggle(drugs[i + 1])}>
+                          <span style={{ color: '#000', fontWeight: formData.selectedDrugs.includes(drugs[i + 1]) ? 'bold' : 'normal', lineHeight: '1.3', display: 'block' }}>
                             {drugs[i + 1]}
                           </span>
-                        </label>
+                        </div>
                       </td>
+                    ) : (
+                      <td style={{ width: '45%' }}></td>
                     )}
                   </tr>
                 );
