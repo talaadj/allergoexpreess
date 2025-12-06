@@ -245,11 +245,19 @@ export const ResultsModal: React.FC<ResultsModalProps> = ({ onClose, initialOrde
                                         <img src="/logo-full.png" alt="Logo" className="h-20" />
                                     </div>
 
-                                    {/* Blood drop icon */}
-                                    <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center border-2 border-red-300">
-                                        <svg className="w-10 h-10 text-red-600" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                                        </svg>
+                                    {/* Blood drops icon - 3 drops in square */}
+                                    <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center border-2 border-red-300 p-1">
+                                        <div className="grid grid-cols-2 gap-0.5">
+                                            <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                            </svg>
+                                            <svg className="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                            </svg>
+                                            <svg className="w-6 h-6 text-red-600 col-span-2 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                                            </svg>
+                                        </div>
                                     </div>
 
                                     <div className="text-right text-[9px] leading-tight max-w-[200px]">
